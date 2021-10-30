@@ -4,11 +4,12 @@
       Recepción de lotes
     </page-title>
     <v-card class="mt-16  " max-width="100%" outlined >
-      <v-card-title class="ml-7 pt-8 pb-12" style="font-weight: normal">
+      <v-card-title class="ml-16 pl-6 pt-10 pb-12" style="font-weight: normal">
         Nueva Recepción
       </v-card-title>
       <confirmation-modal :is-open="openModal" :modal-text="modalText" @confirm="confirmRegister" @cancel="cancelRegister" />
-      <v-card-subtitle class="pb-0">
+      <loading-modal :is-open="loading"></loading-modal>
+      <v-card-subtitle class="pb-0 pl-16">
         <v-form ref="form" lazy-validation>
           <v-container fluid>
             <select-field v-model="reception.producer" field-text="Seleccione un productor" :items="producers" field-name="Productor"/>
@@ -23,27 +24,21 @@
       </v-card-subtitle>
       <confirm-buttons @save="handleRegister" @cancel="handleCancel"/>
       <br>
-      <v-snackbar v-model="snackBar.show" :color="snackBar.color" text top>
-        {{ snackBar.text }}
-        <template #action="{ attrs }">
-          <v-btn color="blue" text v-bind="attrs" @click="snackBar.show = false">
-            <v-icon>mdi-window-close</v-icon>
-          </v-btn>
-        </template>
-      </v-snackbar>
     </v-card>
   </v-container>
 </template>
 
 <script>
+import {mapActions, mapState} from "vuex";
 import SelectField from "~/components/register/fields/SelectField";
 import RegisterFieldValidation from "~/components/register/fields/RegisterFieldValidation";
 import ConfirmButtons from "~/components/register/ConfirmButtons";
 import ConfirmationModal from "~/components/register/ConfirmationModal";
+import LoadingModal from "~/components/register/fields/LoadingModal";
 
 export default {
   name: "NewReception",
-  components: {ConfirmationModal, ConfirmButtons, RegisterFieldValidation, SelectField},
+  components: { LoadingModal, ConfirmationModal, ConfirmButtons, RegisterFieldValidation, SelectField},
   data: () => ({
     producers: ['Finca Gran Reserva', 'Finca Luna Llena','Finca el Cerro'],
     typeSeed: ['Arábica', 'Robusta'],
@@ -61,7 +56,15 @@ export default {
       amountBags: null,
     },
   }),
+  computed: {
+    ...mapState({
+      loading: state => state.receptions.reception.submitted,
+    }),
+  },
   methods: {
+    ...mapActions({
+      registerReception: 'receptions/reception/registerReception',
+    }),
     handleRegister() {
       if (this.$refs.form.validate()) {
         this.openModal = true;
@@ -84,9 +87,10 @@ export default {
     },
 
     async confirmRegister() {
-      // await this.register(this.patient);
+      await this.registerReception(this.reception);
       await this.$router.push('/recepciones');
     },
+
 
   }
 }

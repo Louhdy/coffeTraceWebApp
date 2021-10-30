@@ -3,6 +3,12 @@ import es from 'vuetify/es5/locale/es';
 import en from 'vuetify/es5/locale/en';
 
 export default {
+
+  publicRuntimeConfig: {
+    /* APIs */
+    apiBaseUrl: process.env.BASE_URL || 'http://127.0.0.1:8081',
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - coffeTraceWebApp',
@@ -14,7 +20,11 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap'
+      }
     ]
   },
 
@@ -24,6 +34,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/axios.js',
+    '~/plugins/services.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

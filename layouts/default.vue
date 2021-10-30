@@ -113,5 +113,9 @@ export default {
 .rol {
   font-size: 0.78em;
 }
+.v-application {
+  font-family: 'Montserrat', sans-serif;
+}
+
 </style>
 

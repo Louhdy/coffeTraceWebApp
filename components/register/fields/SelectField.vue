@@ -1,13 +1,13 @@
 <template>
   <v-row>
     <v-col cols="4">
-      <v-subheader>{{ fieldName }}:
+      <v-subheader>{{ fieldName }}
         <h3 v-if="obligatory" class="primary--text">*</h3>
         <h3 v-else> (opcional)</h3>
       :</v-subheader>
     </v-col>
     <v-col cols="7">
-      <v-select v-model="inputVal" height="2.6em" dense  :items="items" :label="fieldText" outlined hide-details="auto" @change="$emit('selectChange')" ></v-select>
+      <v-select v-model="inputVal" class="input" height="2.6em" dense  :items="items" :label="fieldText" outlined hide-details="auto" @change="$emit('selectChange')" ></v-select>
     </v-col>
   </v-row>
 </template>
@@ -36,3 +36,11 @@ export default {
   },
 };
 </script>
+<style >
+.input{
+  font-size: 0.86rem;
+}
+.v-label {
+  font-size: 0.85rem;
+}
+</style>

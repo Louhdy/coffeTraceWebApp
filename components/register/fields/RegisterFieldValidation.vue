@@ -1,15 +1,16 @@
 <template>
   <v-row>
-    <v-col cols="4">
-      <v-subheader>{{ fieldName }}
+    <v-col class="pb-0" cols="4">
+      <v-subheader>{{ fieldName }}:
         <h3 v-if="obligatory" class="primary--text">*</h3>
         <h3 v-else> (opcional)</h3>
-        :</v-subheader>
+      </v-subheader>
     </v-col>
-    <v-col cols="7">
+    <v-col class="pb-0" cols="7">
       <v-text-field
         ref="inputVal"
         v-model="inputVal"
+        class="input"
         :label="placeHolder"
         single-line
         outlined
@@ -51,3 +52,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.input{
+  font-size: 0.86rem;
+}
+</style>

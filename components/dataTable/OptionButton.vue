@@ -1,5 +1,6 @@
 <template>
   <v-btn
+    class="buttons"
     rounded
     color="primary"
     dark
@@ -35,5 +36,7 @@ export default {
 </script>
 
 <style scoped>
-
+.buttons {
+  font-family: "Roboto", sans-serif;
+}
 </style>

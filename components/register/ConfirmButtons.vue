@@ -1,6 +1,7 @@
 <template>
   <v-card-actions class="d-flex justify-end mr-10 mt-4">
     <v-btn
+      class="buttons"
       depressed
       color="primary"
       rounded
@@ -11,7 +12,7 @@
       GUARDAR
     </v-btn>
     <v-btn
-      class="ml-5"
+      class="ml-5 buttons"
       depressed
       color="primary"
       rounded
@@ -44,4 +45,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.buttons {
+  font-family: "Roboto", sans-serif;
+}
+</style>
 

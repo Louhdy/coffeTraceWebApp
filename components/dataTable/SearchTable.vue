@@ -5,7 +5,16 @@
       :items="items"
       :search="search"
       class="elevation-1"
+      :loading="loading"
+      loading-text="Cargando registros"
+      @click:row="rowClick"
     >
+      <template #[`item.Record.newReception.id`]="{ item }">
+        <span>{{ item.Record.newReception.id.toString().padStart(4, '0') }}</span>
+      </template>
+      <template #[`item.detail`]>
+        <a>Ver más</a>
+      </template>
     </v-data-table>
   </v-card>
 </template>
@@ -34,6 +43,10 @@ export default {
       default: 'Buscar',
       type: String,
     },
+    'loading': {
+      default: false,
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -41,11 +54,8 @@ export default {
     };
   },
   methods: {
-    getColor(state) {
-      if (state) { return 'green'; } else { return 'red'; }
-    },
-    handleClick(item) {
-      this.$emit('clicked', item.uuid);
+    rowClick(item) {
+      this.$emit('selectRow', item);
     },
   },
 };

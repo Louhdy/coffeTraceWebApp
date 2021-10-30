@@ -11,7 +11,7 @@
             mdi-alert-circle
           </v-icon>
         </v-card-title>
-        <v-card-text style="text-align: center">
+        <v-card-text style="text-align: center; font-weight: 400">
           {{ modalText }}
         </v-card-text>
         <v-card-actions class="confirmation">
@@ -23,12 +23,13 @@
             large
             min-width="6.5rem"
             :loading="loading"
-            class="mr-1"
+            class="mr-1 buttons"
             @click="accept"
           >
             {{ textButton }}
           </v-btn>
           <v-btn
+            class="buttons"
             :color="colorIcon"
             text
             rounded
@@ -105,5 +106,9 @@ export default {
 .headline{
   justify-content: center;
 }
+.buttons {
+  font-family: "Roboto", sans-serif;
+}
 </style>
+
 

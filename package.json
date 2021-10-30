@@ -16,6 +16,8 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
+    "ramda": "^0.27.1",
+    "stampit": "^4.3.2",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {
@@ -23,10 +25,13 @@
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/vuetify": "^1.12.1",
+    "bourbon": "^7.0.0",
+    "bourbon-neat": "^4.0.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "vuex": "^3.6.2"
   }
 }
