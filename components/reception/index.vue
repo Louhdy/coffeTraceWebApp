@@ -61,6 +61,7 @@ import SearchTable from "~/components/dataTable/SearchTable";
 export default {
   name: "Recepción",
   components: { SearchTable, OptionButton, SearchBox, PageTitle },
+  layout: 'default',
   data() {
     return {
       search: '',

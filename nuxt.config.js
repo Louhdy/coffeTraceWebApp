@@ -1,9 +1,9 @@
 import colors from 'vuetify/es5/util/colors'
 import es from 'vuetify/es5/locale/es';
 import en from 'vuetify/es5/locale/en';
-
-export default {
-
+// eslint-disable-next-line nuxt/no-cjs-in-config
+module.exports = {
+  ssr: true,
   publicRuntimeConfig: {
     /* APIs */
     apiBaseUrl: process.env.BASE_URL || 'http://127.0.0.1:8081',
@@ -32,6 +32,10 @@ export default {
   css: [
   ],
 
+  router: {
+    middleware: 'auth',
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios.js',
@@ -47,6 +51,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,7 +62,29 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/firebase'
   ],
+
+  firebase: {
+    config: {
+      apiKey: "AIzaSyBZjpMQyN5vH0dss2sTDn9TE3N1mR5sycI",
+      authDomain: "coffee-trace.firebaseapp.com",
+      projectId: "coffee-trace",
+      storageBucket: "coffee-trace.appspot.com",
+      messagingSenderId: "351664091079",
+      appId: "1:351664091079:web:1bed34072d905bd9c733e2",
+      measurementId: "G-6ZTT740D72"
+    },
+    services: {
+      auth: {
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChanged',
+        },
+        ssr: true,
+      },
+      firestore: true
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -66,6 +93,15 @@ export default {
   pwa: {
     manifest: {
       lang: 'en'
+    },
+    workbox: {
+      importScripts: [
+        // ...
+        '/firebase-auth-sw.js'
+      ],
+      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
+      // only set this true for testing and remember to always clear your browser cache in development
+      dev: process.env.NODE_ENV === 'development',
     }
   },
 

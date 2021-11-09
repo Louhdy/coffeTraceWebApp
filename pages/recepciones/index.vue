@@ -6,7 +6,7 @@
 import Recepción from "~/components/reception";
 export default {
   name: "Recepciones",
-  components: { Recepción}
+  components: { Recepción},
 }
 </script>
 

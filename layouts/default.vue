@@ -54,7 +54,7 @@
               <v-icon>mdi-logout</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>Cerrar sesión</v-list-item-title>
+              <v-list-item-title @click="logout">Cerrar sesión</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -101,6 +101,12 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+  methods: {
+    async logout() {
+      await this.$fire.auth.signOut();
+      await this.$router.push('/auth/signin');
     }
   }
 }

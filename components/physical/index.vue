@@ -8,10 +8,10 @@
           show-arrows
         >
           <v-slide-item
-            v-for="(item, i) in analysis === null ? null : analysis.newAnalysis.analysis"
+            v-for="(item, i) in physical === null ? null : physical.newPhysical.analysis"
             :key="i"
           >
-            <new-analysis :item="i + 1" :analysis="analysis === null ? null : item" @cancel="cancel"/>
+            <new-analysis :item="i + 1" :analysis="physical === null ? null : item" @cancel="cancel"/>
           </v-slide-item>
         </v-slide-group>
       </v-card>
@@ -31,7 +31,7 @@ export default {
   computed: {
     ...mapState({
       loading: state => state.receptions.reception.loading,
-      analysis: state => state.analysis.physical.physicalAnalysis.analysis,
+      physical: state => state.analysis.physical.physicalAnalysis.physical,
     }),
   },
   methods: {

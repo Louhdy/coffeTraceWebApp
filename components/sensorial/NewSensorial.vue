@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateAnalysis: 'analysis/sensorial/sensorialAnalysis/updateAnalysis',
+      updateAnalysis: 'analysis/sensorial/sensorialAnalysis/updateSensorial',
     }),
     handleCancel() {
       this.$emit('cancel');
@@ -87,7 +87,7 @@ export default {
       this.openModal = true;
     },
     async confirmRegister() {
-      await this.updateAnalysis(this.$store.state.analysis.sensorial.sensorialAnalysis.analysis);
+      await this.updateAnalysis(this.$store.state.analysis.sensorial.sensorialAnalysis.sensorial);
     },
     cancelRegister() {
       this.openModal = false;

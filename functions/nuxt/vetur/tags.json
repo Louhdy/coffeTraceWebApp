@@ -1,0 +1,83 @@
+{
+  "PageSubtitle": {
+    "description": "Auto imported from components/PageSubtitle.vue"
+  },
+  "PageTitle": {
+    "description": "Auto imported from components/PageTitle.vue"
+  },
+  "DataTableOptionButton": {
+    "description": "Auto imported from components/dataTable/OptionButton.vue"
+  },
+  "DataTableSearchTable": {
+    "description": "Auto imported from components/dataTable/SearchTable.vue"
+  },
+  "Lot": {
+    "description": "Auto imported from components/lot/index.vue"
+  },
+  "Physical": {
+    "description": "Auto imported from components/physical/index.vue"
+  },
+  "PhysicalNewPhysical": {
+    "description": "Auto imported from components/physical/NewPhysical.vue"
+  },
+  "ReceptionDetails": {
+    "description": "Auto imported from components/reception/Details.vue"
+  },
+  "Reception": {
+    "description": "Auto imported from components/reception/index.vue"
+  },
+  "ReceptionNewReception": {
+    "description": "Auto imported from components/reception/NewReception.vue"
+  },
+  "RegisterConfirmationModal": {
+    "description": "Auto imported from components/register/ConfirmationModal.vue"
+  },
+  "RegisterConfirmButtons": {
+    "description": "Auto imported from components/register/ConfirmButtons.vue"
+  },
+  "SearchBox": {
+    "description": "Auto imported from components/search/SearchBox.vue"
+  },
+  "Sensorial": {
+    "description": "Auto imported from components/sensorial/index.vue"
+  },
+  "SensorialNewSensorial": {
+    "description": "Auto imported from components/sensorial/NewSensorial.vue"
+  },
+  "Traceability": {
+    "description": "Auto imported from components/traceability/index.vue"
+  },
+  "TraceabilityPhase": {
+    "description": "Auto imported from components/traceability/Phase.vue"
+  },
+  "UtilsLineLoader": {
+    "description": "Auto imported from components/utils/LineLoader.vue"
+  },
+  "RegisterFieldsLoadingModal": {
+    "description": "Auto imported from components/register/fields/LoadingModal.vue"
+  },
+  "RegisterFieldValidation": {
+    "description": "Auto imported from components/register/fields/RegisterFieldValidation.vue"
+  },
+  "RegisterFieldsSelectField": {
+    "description": "Auto imported from components/register/fields/SelectField.vue"
+  },
+  "TraceabilityPhasesDistribution": {
+    "description": "Auto imported from components/traceability/phases/Distribution.vue"
+  },
+  "TraceabilityPhasesPacking": {
+    "description": "Auto imported from components/traceability/phases/Packing.vue"
+  },
+  "TraceabilityPhasesPhysical": {
+    "description": "Auto imported from components/traceability/phases/Physical.vue"
+  },
+  "TraceabilityPhasesSensorial": {
+    "description": "Auto imported from components/traceability/phases/Sensorial.vue"
+  },
+  "TraceabilityPhasesToast": {
+    "description": "Auto imported from components/traceability/phases/Toast.vue"
+  },
+  "TraceabilityUtilsPending": {
+    "description": "Auto imported from components/traceability/utils/Pending.vue"
+  }
+}

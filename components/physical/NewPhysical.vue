@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateAnalysis: 'analysis/physical/physicalAnalysis/updateAnalysis',
+      updateAnalysis: 'analysis/physical/physicalAnalysis/updatePhysical',
     }),
     handleCancel() {
       this.$emit('cancel');
@@ -87,7 +87,7 @@ export default {
       this.openModal = true;
     },
     async confirmRegister() {
-      await this.updateAnalysis(this.$store.state.analysis.physical.physicalAnalysis.analysis);
+      await this.updateAnalysis(this.$store.state.analysis.physical.physicalAnalysis.physical);
     },
     cancelRegister() {
       this.openModal = false;

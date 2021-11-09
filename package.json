@@ -13,9 +13,14 @@
   "dependencies": {
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/firebase": "^7.6.1",
     "@nuxtjs/pwa": "^3.3.5",
-    "core-js": "^3.15.1",
+    "core-js": "^3.18.3",
+    "firebase": "^8.10.0",
+    "firebase-admin": "^10.0.0",
+    "jquery": "^3.6.0",
     "nuxt": "^2.15.7",
+    "qrcode.vue": "^1.7.0",
     "ramda": "^0.27.1",
     "stampit": "^4.3.2",
     "vuetify": "^2.5.5"

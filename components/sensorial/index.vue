@@ -8,10 +8,10 @@
           show-arrows
         >
           <v-slide-item
-            v-for="(item, i) in analysis === null ? null : analysis.newSensorial.analysis"
+            v-for="(item, i) in sensorial === null ? null : sensorial.newSensorial.analysis"
             :key="i"
           >
-            <new-sensorial :item="i + 1" :analysis="analysis === null ? null : item" @cancel="cancel"/>
+            <new-sensorial :item="i + 1" :analysis="sensorial === null ? null : item" @cancel="cancel"/>
           </v-slide-item>
         </v-slide-group>
       </v-card>
@@ -30,7 +30,7 @@ export default {
     ...mapState({
       loading: state => state.receptions.reception.loading,
       reception: state => state.receptions.reception.reception,
-      analysis: state => state.analysis.sensorial.sensorialAnalysis.analysis,
+      sensorial: state => state.analysis.sensorial.sensorialAnalysis.sensorial,
     }),
   },
   methods: {

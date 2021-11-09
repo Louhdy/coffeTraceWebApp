@@ -1,0 +1,37 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "D:\\\\Mels\\\\2020 - 3\\\\Tesis\\\\Tesis 2\\\\CoffeeTrace\\\\coffeTraceWebApp\\\\pages\\\\inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_a28540f2"
+  },
+  {
+    "name": "recepciones",
+    "path": "/recepciones",
+    "component": "D:\\\\Mels\\\\2020 - 3\\\\Tesis\\\\Tesis 2\\\\CoffeeTrace\\\\coffeTraceWebApp\\\\pages\\\\recepciones\\\\index.vue",
+    "chunkName": "pages/recepciones/index",
+    "_name": "_2b13c6c7"
+  },
+  {
+    "name": "recepciones-nueva-recepcion",
+    "path": "/recepciones/nueva-recepcion",
+    "component": "D:\\\\Mels\\\\2020 - 3\\\\Tesis\\\\Tesis 2\\\\CoffeeTrace\\\\coffeTraceWebApp\\\\pages\\\\recepciones\\\\nueva-recepcion.vue",
+    "chunkName": "pages/recepciones/nueva-recepcion",
+    "_name": "_e70559de"
+  },
+  {
+    "name": "recepciones-detalle-id",
+    "path": "/recepciones/detalle/:id?",
+    "component": "D:\\\\Mels\\\\2020 - 3\\\\Tesis\\\\Tesis 2\\\\CoffeeTrace\\\\coffeTraceWebApp\\\\pages\\\\recepciones\\\\detalle\\\\_id.vue",
+    "chunkName": "pages/recepciones/detalle/_id",
+    "_name": "_38561d3e"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "D:\\\\Mels\\\\2020 - 3\\\\Tesis\\\\Tesis 2\\\\CoffeeTrace\\\\coffeTraceWebApp\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_5525ca82"
+  }
+]
