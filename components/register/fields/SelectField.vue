@@ -7,7 +7,20 @@
       :</v-subheader>
     </v-col>
     <v-col cols="7">
-      <v-select v-model="inputVal" class="input" height="2.6em" dense  :items="items" :label="fieldText" outlined hide-details="auto" @change="$emit('selectChange')" ></v-select>
+      <v-select
+        ref="inputVal"
+        v-model="inputVal"
+        class="input"
+        height="2.6em"
+        dense
+        :items="items"
+        :label="fieldText"
+        outlined hide-details="auto"
+        @input="
+          (event) => $emit('inputChange', $refs.inputVal.validate())
+        "
+      >
+      </v-select>
     </v-col>
   </v-row>
 </template>
@@ -24,13 +37,18 @@ export default {
     'fieldText': { default: '', type: String },
     'obligatory': {default: true, type: Boolean}
   },
+  data() {
+    return{
+      selectValue: null,
+    }
+  },
   computed: {
     inputVal: {
       get() {
         return this.value;
       },
       set(val) {
-        this.$emit('input', val);
+        this.selectValue = val;
       },
     },
   },

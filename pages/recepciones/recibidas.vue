@@ -5,7 +5,7 @@
 <script>
 import Recepción from "~/components/reception";
 export default {
-  name: "Recepciones",
+  name: "Recibidas",
   components: { Recepción},
   layout: 'default'
 }
@@ -14,3 +14,4 @@ export default {
 <style scoped>
 
 </style>
+

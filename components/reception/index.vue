@@ -14,7 +14,7 @@
     </v-row>
     <v-row justify="space-between">
       <v-col cols="12" md="12" >
-        <p class="headerTable mb-2">Seleccione el lote al que agregar el análisis físico</p>
+        <p class="headerTable mb-2">Seleccione un lote para ver su trazabilidad</p>
         <search-table
           table-title="Recepciones"
           :loading="loading"

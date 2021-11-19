@@ -22,10 +22,10 @@
                   <label class="form-remember">
                   </label><a class="form-recovery" href="#">Olvidó la contraseña?</a>
                 </div>
-                <div class="form-group">
-                  <button type="submit" @click="login">Iniciar</button>
-                </div>
               </form>
+              <div class="form-group mt-4">
+                <button @click="login">Iniciar</button>
+              </div>
             </div>
           </div>
           <div class="form-panel two">
@@ -35,16 +35,16 @@
             <div class="form-content">
               <form>
                 <div class="form-group">
-                  <label for="email">Correo electrónico</label>
-                  <input id="email" v-model="newUser.email" type="email" name="email" required="required"/>
+                  <label for="email">Nombre Completo</label>
+                  <input id="email" v-model="newUser.name" type="text" name="email" required="required"/>
                 </div>
                 <div class="form-group">
-                  <label for="password">Contraseña</label>
-                  <input v-model="newUser.password"  type="password" name="password" required="required"/>
+                  <label for="email">Correo Electrónico</label>
+                  <input v-model="newUser.email"  type="email" name="password" required="required"/>
                 </div>
                 <div class="form-group">
-                  <label for="cpassword">Confirmar Contraseña</label>
-                  <input id="cpassword" v-model="newUser.cpassword" type="password" name="cpassword" required="required"/>
+                  <label for="cpassword">Contraseña</label>
+                  <input id="cpassword" v-model="newUser.password" type="password" name="cpassword" required="required"/>
                 </div>
                 <div class="form-group">
                   <v-container>
@@ -56,10 +56,10 @@
                     </v-row>
                   </v-container>
                 </div>
-                <div class="form-group">
-                  <button type="submit" @click="register">Registrarse</button>
-                </div>
               </form>
+              <div class="form-group mt-8">
+                <button @click="register">Registrarse</button>
+              </div>
             </div>
           </div>
         </div>
@@ -70,16 +70,20 @@
 
 <script>
 import $ from 'jquery';
+import { doc, setDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { db } from "~/plugins/firebase";
 
 export default {
   name: "SignIn",
   layout: "auth",
+  middleware: 'auth',
   data() {
     return {
       newUser: {
         email: '',
         password: '',
-        cpassword: '',
+        name: '',
         role: null,
       },
       existentUser: {
@@ -134,12 +138,15 @@ export default {
     },
     async register () {
       try {
-        await this.$fire.firestore.collection("users").add({
+        const auth = getAuth();
+        const newUser = doc(db, 'users', this.newUser.email);
+        await setDoc(newUser, {
+          name: this.newUser.name,
           email: this.newUser.email,
           password: this.newUser.password,
           role: this.newUser.role,
         });
-        await this.$fire.auth.createUserWithEmailAndPassword(this.newUser.email, this.newUser.password)
+        createUserWithEmailAndPassword(auth, this.newUser.email, this.newUser.password)
           .then(() => {
             this.$router.push('/recepciones');
           });
@@ -150,14 +157,21 @@ export default {
     clearForm () {
       this.newUser.email = '';
       this.newUser.password = '';
-      this.newUser.cpassword = '';
+      this.newUser.name = '';
       this.newUser.role = null;
     },
     login() {
-      this.$fire.auth.signInWithEmailAndPassword(this.existentUser.email, this.existentUser.password)
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, this.existentUser.email, this.existentUser.password)
         .then(() => {
           this.$router.push('/recepciones');
-      });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          console.log(errorCode);
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
     }
   }
 }

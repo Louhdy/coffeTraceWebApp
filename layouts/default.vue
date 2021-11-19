@@ -10,21 +10,18 @@
       <template #prepend>
         <v-list-item class="ml-4 mt-1" two-line>
           <v-list-item-avatar>
-            <img v-if="user ? user.img : false" src="@/static/v.png" alt="user">
-            <div v-else class="user-icon">
-              <div>{{ user ? user.sub[0] : "" }}</div>
-            </div>
+            <img src="@/static/v.png" alt="user">
           </v-list-item-avatar>
 
           <v-list-item-content>
             <v-list-item-title class="user">
               {{
-                user ? user.sub : "---"
+                user === null ? '' : user.name
               }}
             </v-list-item-title>
             <v-list-item-subtitle class="rol">
               {{
-                user ? user.email : "---"
+                user === null ? '' : user.role
               }}
             </v-list-item-subtitle>
           </v-list-item-content>
@@ -69,44 +66,84 @@
 </template>
 
 <script>
+import { getAuth, signOut } from "firebase/auth";
+import {mapState} from "vuex";
+import { doc, getDoc } from "firebase/firestore";
+import {db} from "~/plugins/firebase";
+
 export default {
+  middleware: 'auth',
+  fetchOnServer: false,
   data () {
     return {
       clipped: false,
       drawer: false,
       fixed: false,
-      user: {
-        img: "@/static/IntegraCoffee.png",
-        sub: "Melvin Gómez",
-        email: "Almacenero"
-      },
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Recepción',
-          to: '/recepciones'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Muestreo',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Tostado',
-          to: '/'
-        }
-      ],
+      user: null,
+      img: "@/static/IntegraCoffee.png",
+      items: [],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
     }
   },
+  async fetch() {
+    const docRef = doc(db, "users", this.activeUser.email);
+    const response = await getDoc(docRef);
+    this.user = response.data();
+    this.items = this.getItems(this.user.role);
+  },
+  computed: {
+    ...mapState({
+      activeUser: state => state.user,
+    }),
+  },
   methods: {
-    async logout() {
-      await this.$fire.auth.signOut();
-      await this.$router.push('/auth/signin');
+    getItems(role) {
+      if (role === 'Almacenero') {
+        return [
+          {
+            icon: 'mdi-apps',
+            title: 'Recepción',
+            to: '/recepciones'
+          },
+        ]
+      } else if (role === 'Catador') {
+        return [
+          {
+            icon: 'mdi-apps',
+            title: 'Muestreo',
+            to: '/recepciones'
+          },
+        ]
+      } else if (role === 'Tostador') {
+        return [
+          {
+            icon: 'mdi-apps',
+            title: 'Tostado',
+            to: '/recepciones'
+          },
+        ]
+      } else {
+        return [
+          {
+            icon: 'mdi-apps',
+            title: 'Empaquetado',
+            to: '/recepciones'
+          },
+        ]
+      }
+
+    },
+    logout() {
+      const auth = getAuth();
+      signOut(auth).then(() => {
+        this.$router.push('/auth/signin');
+      }).catch((error) => {
+        console.log(error);
+      });
+
     }
   }
 }

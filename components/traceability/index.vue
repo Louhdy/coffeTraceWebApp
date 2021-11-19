@@ -23,6 +23,7 @@
     </v-row>
     <physical v-if="selectedPhase === 'physical'" @cancel="restoreTrace"/>
     <sensorial v-if="selectedPhase === 'sensorial'" @cancel="restoreTrace"/>
+    <toast v-if="selectedPhase === 'toast'" @cancel="restoreTrace"/>
   </v-container>
 </template>
 
@@ -31,9 +32,10 @@ import Phase from "~/components/traceability/Phase";
 import PageSubtitle from "~/components/PageSubtitle";
 import Physical from "~/components/physical";
 import Sensorial from "~/components/sensorial";
+import Toast from "~/components/toast";
 export default {
   name: "Traceability",
-  components: {Sensorial, Physical, PageSubtitle, Phase},
+  components: {Toast, Sensorial, Physical, PageSubtitle, Phase},
   data() {
     return {
       model: null,

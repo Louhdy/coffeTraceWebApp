@@ -90,8 +90,6 @@ export default {
       await this.registerReception(this.reception);
       await this.$router.push('/recepciones');
     },
-
-
   }
 }
 </script>

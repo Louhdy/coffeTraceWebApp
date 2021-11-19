@@ -7,7 +7,7 @@
   >
     <physical-analysis v-if="item === 'physical'" @selected="select"/>
     <sensorial v-if="item === 'sensorial'" @selected="select"/>
-    <toast v-if="item === 'toast'"/>
+    <toast v-if="item === 'toast'" @selected="select"/>
     <packing v-if="item === 'packing'"/>
     <distribution v-if="item === 'distribution'"/>
   </v-card>

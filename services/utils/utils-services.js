@@ -6,6 +6,7 @@ export const UtilsServiceStamp = stampit.methods( {
     return this.fetchApi.post('getObjectById', { uuid });
   },
   updateObjectById(object) {
+    console.log("AUXLIO 2")
     return this.fetchApi.post('updateObjectById', { object });
   },
 });

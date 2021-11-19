@@ -24,7 +24,7 @@ export const actions = {
     commit('changeLoading', true);
     try {
       await service.updateObjectById(
-        {uuid: params.newAnalysis.uuid, object: params}
+        {uuid: params.newToast.uuid, object: params}
       );
     } catch (error) {
       commit('catchError', error);

@@ -32,14 +32,13 @@ module.exports = {
   css: [
   ],
 
-  router: {
-    middleware: 'auth',
-  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios.js',
     '~/plugins/services.js',
+    '~/plugins/firebase.js',
+    '~/plugins/fireauth.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -62,29 +61,8 @@ module.exports = {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    '@nuxtjs/firebase'
   ],
 
-  firebase: {
-    config: {
-      apiKey: "AIzaSyBZjpMQyN5vH0dss2sTDn9TE3N1mR5sycI",
-      authDomain: "coffee-trace.firebaseapp.com",
-      projectId: "coffee-trace",
-      storageBucket: "coffee-trace.appspot.com",
-      messagingSenderId: "351664091079",
-      appId: "1:351664091079:web:1bed34072d905bd9c733e2",
-      measurementId: "G-6ZTT740D72"
-    },
-    services: {
-      auth: {
-        initialize: {
-          onAuthStateChangedAction: 'onAuthStateChanged',
-        },
-        ssr: true,
-      },
-      firestore: true
-    }
-  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -94,15 +72,6 @@ module.exports = {
     manifest: {
       lang: 'en'
     },
-    workbox: {
-      importScripts: [
-        // ...
-        '/firebase-auth-sw.js'
-      ],
-      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
-      // only set this true for testing and remember to always clear your browser cache in development
-      dev: process.env.NODE_ENV === 'development',
-    }
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

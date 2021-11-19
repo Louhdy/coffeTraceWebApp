@@ -36,7 +36,7 @@
         </v-row>
       </v-container>
     </v-card-subtitle>
-    <pending v-else/>
+    <pending v-else @clicked="clicked"/>
   </div>
 </template>
 

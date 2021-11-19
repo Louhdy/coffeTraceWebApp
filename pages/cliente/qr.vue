@@ -17,13 +17,13 @@ export default {
   layout: 'client',
   data() {
     return {
-      value: 'http://localhost:3000/cliente/producto/c3371eaa-bc95-4cd0-b76f-92ad235ea51e',
+      value: 'http://localhost:3000/cliente/producto/895588fd-7c2a-41ca-a51b-75fa0c4bd907',
       size: 300,
     }
   },
   methods: {
     redirect() {
-      this.$router.push('/cliente/producto/c3371eaa-bc95-4cd0-b76f-92ad235ea51e');
+      this.$router.push('/cliente/producto/895588fd-7c2a-41ca-a51b-75fa0c4bd907');
     }
   }
 }

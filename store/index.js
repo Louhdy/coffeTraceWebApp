@@ -1,9 +1,9 @@
-export default {
-  onAuthStateChanged({ commit }, authUser ) {
-    if (!authUser) {
-      commit('RESET_STORE')
-      return
-    }
-    commit('SET_AUTH_USER', authUser)
+export const state = () => ({
+  user: null,
+})
+
+export const mutations = {
+  setUser(_state, user){
+    _state.user = user;
   },
 }
